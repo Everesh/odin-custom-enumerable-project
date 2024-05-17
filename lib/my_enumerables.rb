@@ -34,6 +34,14 @@ module Enumerable
     end
     true
   end
+
+  def my_count
+    return self.size unless block_given?
+
+    count = 0
+    self.my_each { |item| count += 1 if yield(item) }
+    count
+  end
 end
 
 # You will first have to define my_each
