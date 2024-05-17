@@ -48,6 +48,17 @@ module Enumerable
     self.my_each { |item| out.push(yield(item)) }
     out
   end
+
+  def my_inject(innitial = nil)
+    if innitial.nil?
+      acc = self.first
+      self.drop(1).my_each { |item| acc = yield(acc, item) }
+    else
+      acc = innitial
+      self.my_each { |item| acc = yield(acc, item) }
+    end
+    acc
+  end
 end
 
 # You will first have to define my_each
