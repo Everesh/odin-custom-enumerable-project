@@ -2,7 +2,7 @@ module Enumerable
   # Your code goes here
   def my_each_with_index
     index = 0
-    for item in self
+    self.my_each do |item|
       yield(item, index)
       index += 1
     end
